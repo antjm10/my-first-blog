@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from ckeditor.fields import RichTextField
+
 
 
 class Post(models.Model):
@@ -9,6 +11,8 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    image = models.ImageField(upload_to="blogimages", null=True, blank=True)
+    content = RichTextField(null=True, blank=True)
 
     def publish(self):
         self.published_date = timezone.now()

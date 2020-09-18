@@ -1,5 +1,8 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
 {% block content %}
-    <div class="post">
+    <div class="post container">
         {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
@@ -9,6 +12,11 @@
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             {% endif %}
         <h2>{{ post.title }}</h2>
+        {% if post.image %}
+        <div class="image"> 
+        <img src="{% get_media_prefix %}{{ post.image }}"/>
+        </div>{% endif %}
         <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.content|safe }}</p>
     </div>
 {% endblock %}
