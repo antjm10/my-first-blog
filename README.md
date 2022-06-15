@@ -1,3 +1,3 @@
 # my-first-blog
 
-a blog
+a small blog in python
